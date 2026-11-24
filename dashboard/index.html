@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Launch Radar</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="masthead">
+    <h1>TOKEN LAUNCH RADAR</h1>
+    <p class="tag">Every protocol that records no token yet, ranked by what its launch would be worth — and how to farm it.</p>
+    <p class="meta" id="meta"></p>
+  </div>
+  <div class="model" id="model"></div>
+</header>
+<section class="controls">
+  <input id="q" type="search" placeholder="Search protocols..." aria-label="Search protocols">
+  <select id="cat" aria-label="Filter by category"></select>
+  <label class="chk"><input id="watch" type="checkbox"> Watchlist only (above the $50M floor)</label>
+  <select id="sort" aria-label="Sort the board">
+    <option value="value">Sort: implied value</option>
+    <option value="tvl">Sort: TVL</option>
+    <option value="growth">Sort: 7-day growth</option>
+    <option value="age">Sort: longest without a token</option>
+    <option value="name">Sort: name</option>
+  </select>
+  <span class="count" id="count"></span>
+</section>
+<main>
+  <table id="board">
+    <thead>
+      <tr>
+        <th class="num">#</th><th>Protocol</th><th>Category</th><th>Chains</th>
+        <th class="num">TVL</th><th class="num">7d</th><th class="num">Age</th>
+        <th class="num">Multiple</th><th class="num">Implied value</th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <section id="detail" class="detail" hidden></section>
+</main>
+<footer>
+  <p><strong>How to read this board.</strong> A protocol is listed when it records no token in the snapshot and is not a wrapped, staked or bridged product of a token that already trades. Its implied value is its TVL multiplied by the market value per TVL dollar of launched protocols in its category (a median, shrunk toward the global median), adjusted by two fitted terms: one for its 7-day TVL momentum, one for how long it has run with no token. Every term is fitted from the snapshot itself at build time — run the same program on a newer snapshot and the board re-fits and re-ranks on its own. Click any row for the full equation and its farm plan.</p>
+</footer>
+<script src="zdata.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
